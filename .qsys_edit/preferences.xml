@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="lab61soc.clk" showClockDomains="1" showResetDomains="0">
+  <columns>
+   <connections preferredWidth="143" />
+   <irq preferredWidth="34" />
+   <name preferredWidth="276" />
+   <inputclock preferredWidth="145" />
+  </columns>
+ </systemtable>
+ <library expandedCategories="Library,Project" />
+ <window width="3226" height="1746" x="-13" y="-13" />
+</preferences>

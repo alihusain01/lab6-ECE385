@@ -1,0 +1,16 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst lab61soc.pio_0 -pg 1 -lvl 2 -y 320
+preplace inst lab61soc.nios2_gen2_0.cpu -pg 1
+preplace inst lab61soc.nios2_gen2_0.clock_bridge -pg 1
+preplace inst lab61soc.nios2_gen2_0 -pg 1 -lvl 1 -y 70
+preplace inst lab61soc.clk_0 -pg 1 -lvl 2 -y 240
+preplace inst lab61soc -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst lab61soc.onchip_memory2_0 -pg 1 -lvl 2 -y 110
+preplace inst lab61soc.nios2_gen2_0.reset_bridge -pg 1
+preplace netloc INTERCONNECT<net_container>lab61soc</net_container>(MASTER)nios2_gen2_0.data_master,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)onchip_memory2_0.s1) 1 0 2 60 230 440
+preplace netloc FAN_OUT<net_container>lab61soc</net_container>(SLAVE)onchip_memory2_0.clk1,(SLAVE)nios2_gen2_0.clk,(MASTER)clk_0.clk) 1 0 3 60 30 480 100 700
+preplace netloc INTERCONNECT<net_container>lab61soc</net_container>(SLAVE)onchip_memory2_0.reset1,(SLAVE)clk_0.clk_in_reset,(SLAVE)nios2_gen2_0.reset,(MASTER)clk_0.clk_reset,(MASTER)nios2_gen2_0.debug_reset_request) 1 0 3 80 210 460 310 700
+preplace netloc EXPORT<net_container>lab61soc</net_container>(SLAVE)clk_0.clk_in,(SLAVE)lab61soc.clk) 1 0 2 NJ 250 NJ
+levelinfo -pg 1 0 30 740
+levelinfo -hier lab61soc 40 200 530 720
