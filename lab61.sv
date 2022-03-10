@@ -21,14 +21,16 @@ module lab61(  	 	  input	        MAX10_CLK1_50,
 					  output 		DRAM_UDQM,
 					  output	    DRAM_RAS_N,
 					  output	    DRAM_WE_N,
-					  output	    DRAM_CLK
+					  output	    DRAM_CLK,
+					  input		 [7:0] SW //ADDED
 				  
 				  );
 				  
 				  // You need to make sure that the port names here are identical to the port names at 
 				  // the interface in lab61_soc.v
-				  lab61soc m_lab61_soc (.clk_clk(MAX10_CLK1_50), //changed from lab61_soc to lab61soc
-											 .reset_reset_n(KEY[0]), 
+				  lab61soc m_lab61_soc (.buttons_external_connection_export(KEY),
+											 .clk_clk(MAX10_CLK1_50), //changed from lab61_soc to lab61soc
+											 .reset_reset_n(1'b1), 
 											 .led_wire_export(LEDR),
 											//SDRAM
 											.sdram_clk_clk(DRAM_CLK),                            //clk_sdram.clk
@@ -40,7 +42,8 @@ module lab61(  	 	  input	        MAX10_CLK1_50,
 											.sdram_wire_dq(DRAM_DQ),                             //.dq
 											.sdram_wire_dqm({DRAM_UDQM,DRAM_LDQM}),              //.dqm
 											.sdram_wire_ras_n(DRAM_RAS_N),                       //.ras_n
-											.sdram_wire_we_n(DRAM_WE_N)                          //.we_n
+											.sdram_wire_we_n(DRAM_WE_N),                          //.we_n
+											.switches_external_connection_export(SW)
 											 );
 											 
 				//Instantiate additional FPGA fabric modules as needed		  

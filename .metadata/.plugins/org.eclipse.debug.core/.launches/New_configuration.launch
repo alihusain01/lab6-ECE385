@@ -7,5 +7,7 @@
 <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
 <booleanAttribute key="org.eclipse.cdt.launch.ENABLE_REGISTER_BOOKKEEPING" value="false"/>
 <booleanAttribute key="org.eclipse.cdt.launch.ENABLE_VARIABLE_BOOKKEEPING" value="false"/>
+<stringAttribute key="processorDeviceIndex" value="1"/>
+<stringAttribute key="processorInstanceId" value="0"/>
 <booleanAttribute key="runProgram" value="true"/>
 </launchConfiguration>
