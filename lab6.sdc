@@ -14,7 +14,7 @@ create_clock -period "50.0 MHz" [get_ports MAX10_CLK2_50]
 
 
 # SDRAM CLK
-create_generated_clock -source [get_pins { u0|altpll_0|sd1|pll7|clk[1] }] \
+create_generated_clock -source [get_pins { m_lab61_soc|altpll_0|sd1|pll7|clk[1] }] \
                       -name clk_dram_ext [get_ports {DRAM_CLK}]
 
 
@@ -50,7 +50,7 @@ set_input_delay -min -clock clk_dram_ext 3.0 [get_ports DRAM_DQ*]
 
 #shift-window
 set_multicycle_path -from [get_clocks {clk_dram_ext}] \
-                    -to [get_clocks { u0|altpll_0|sd1|pll7|clk[0] }] \
+                    -to [get_clocks { m_lab61_soc|altpll_0|sd1|pll7|clk[0] }] \
 						  -setup 2
 						  
 #**************************************************************
@@ -61,10 +61,14 @@ set_multicycle_path -from [get_clocks {clk_dram_ext}] \
 # min : Board Delay (Data) - Board Delay (Clock) - th (External Device)
 # max 1.5+0.1 =1.6
 # min -0.8-0.1 = 0.9
-set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_DQ* DRAM_*DQM}]
-set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_DQ* DRAM_*DQM}]
+set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_DQ* DRAM_UDQM*}]
+set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_DQ* DRAM_UDQM*}]
+
 set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_ADDR* DRAM_BA* DRAM_RAS_N DRAM_CAS_N DRAM_WE_N DRAM_CKE DRAM_CS_N}]
 set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_ADDR* DRAM_BA* DRAM_RAS_N DRAM_CAS_N DRAM_WE_N DRAM_CKE DRAM_CS_N}]
+
+set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_DQ* DRAM_LDQM*}]
+set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_DQ* DRAM_LDQM*}]
 
 
 #**************************************************************
@@ -76,6 +80,25 @@ set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_ADDR* DRAM_BA* D
 #**************************************************************
 # Set False Path
 #**************************************************************
+set_false_path -from [get_ports SW*]
+set_false_path -from [get_ports KEY*]
+set_false_path -from [get_ports DRAM_DQ*]
+set_false_path -from [get_ports altera_reserved_tdi*]
+set_false_path -from [get_ports altera_reserved_tms*]
+
+
+set_false_path -to [get_ports LEDR*]
+set_false_path -to [get_ports DRAM_ADDR*]
+set_false_path -to [get_ports DRAM_BA*]
+set_false_path -to [get_ports DRAM_CAS_N*]
+set_false_path -to [get_ports DRAM_CS_N*]
+set_false_path -to [get_ports DRAM_DQ*]
+set_false_path -to [get_ports DRAM_CLK*]
+set_false_path -to [get_ports DRAM_LDQM*]
+set_false_path -to [get_ports DRAM_RAS_N*]
+set_false_path -to [get_ports DRAM_UDQM*]
+set_false_path -to [get_ports DRAM_WE_N*]
+set_false_path -to [get_ports altera_reserved_tdo*]
 
 
 
