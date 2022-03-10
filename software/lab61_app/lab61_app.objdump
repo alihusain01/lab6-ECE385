@@ -37,49 +37,49 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   9 .debug_aranges 000002b0  00000000  00000000  00001ee8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_info   000039df  00000000  00000000  00002198  2**0
+ 10 .debug_info   000039e5  00000000  00000000  00002198  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 0000118d  00000000  00000000  00005b77  2**0
+ 11 .debug_abbrev 0000118d  00000000  00000000  00005b7d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_line   00001224  00000000  00000000  00006d04  2**0
+ 12 .debug_line   00001224  00000000  00000000  00006d0a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  0000040c  00000000  00000000  00007f28  2**2
+ 13 .debug_frame  0000040c  00000000  00000000  00007f30  2**2
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    00000e9c  00000000  00000000  00008334  2**0
+ 14 .debug_str    00000ea8  00000000  00000000  0000833c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    00000430  00000000  00000000  000091d0  2**0
+ 15 .debug_loc    00000430  00000000  00000000  000091e4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_alt_sim_info 00000010  00000000  00000000  00009600  2**2
+ 16 .debug_alt_sim_info 00000010  00000000  00000000  00009614  2**2
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_ranges 00000080  00000000  00000000  00009610  2**3
+ 17 .debug_ranges 00000080  00000000  00000000  00009628  2**3
                   CONTENTS, READONLY, DEBUGGING
- 18 .thread_model 00000003  00000000  00000000  0000a84e  2**0
+ 18 .thread_model 00000003  00000000  00000000  0000a866  2**0
                   CONTENTS, READONLY
- 19 .cpu          0000000c  00000000  00000000  0000a851  2**0
+ 19 .cpu          0000000c  00000000  00000000  0000a869  2**0
                   CONTENTS, READONLY
- 20 .qsys         00000001  00000000  00000000  0000a85d  2**0
+ 20 .qsys         00000001  00000000  00000000  0000a875  2**0
                   CONTENTS, READONLY
- 21 .simulation_enabled 00000001  00000000  00000000  0000a85e  2**0
+ 21 .simulation_enabled 00000001  00000000  00000000  0000a876  2**0
                   CONTENTS, READONLY
- 22 .sysid_hash   00000004  00000000  00000000  0000a85f  2**0
+ 22 .sysid_hash   00000004  00000000  00000000  0000a877  2**0
                   CONTENTS, READONLY
- 23 .sysid_base   00000004  00000000  00000000  0000a863  2**0
+ 23 .sysid_base   00000004  00000000  00000000  0000a87b  2**0
                   CONTENTS, READONLY
- 24 .sysid_time   00000004  00000000  00000000  0000a867  2**0
+ 24 .sysid_time   00000004  00000000  00000000  0000a87f  2**0
                   CONTENTS, READONLY
- 25 .stderr_dev   00000004  00000000  00000000  0000a86b  2**0
+ 25 .stderr_dev   00000004  00000000  00000000  0000a883  2**0
                   CONTENTS, READONLY
- 26 .stdin_dev    00000004  00000000  00000000  0000a86f  2**0
+ 26 .stdin_dev    00000004  00000000  00000000  0000a887  2**0
                   CONTENTS, READONLY
- 27 .stdout_dev   00000004  00000000  00000000  0000a873  2**0
+ 27 .stdout_dev   00000004  00000000  00000000  0000a88b  2**0
                   CONTENTS, READONLY
- 28 .sopc_system_name 00000008  00000000  00000000  0000a877  2**0
+ 28 .sopc_system_name 00000008  00000000  00000000  0000a88f  2**0
                   CONTENTS, READONLY
- 29 .quartus_project_dir 00000025  00000000  00000000  0000a87f  2**0
+ 29 .quartus_project_dir 0000002b  00000000  00000000  0000a897  2**0
                   CONTENTS, READONLY
- 30 .jdi          00003df6  00000000  00000000  0000a8a4  2**0
+ 30 .jdi          00003df6  00000000  00000000  0000a8c2  2**0
                   CONTENTS, READONLY
- 31 .sopcinfo     00048efa  00000000  00000000  0000e69a  2**0
+ 31 .sopcinfo     0004b611  00000000  00000000  0000e6b8  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 08000000 l    d  .entry	00000000 .entry
@@ -277,8 +277,8 @@ int main()
  8000064:	df000204 	addi	fp,sp,8
 	int i = 0;
  8000068:	e03ffe15 	stw	zero,-8(fp)
-	volatile unsigned int *LED_PIO = (unsigned int*)0x20; //make a pointer to access the PIO block
- 800006c:	00800804 	movi	r2,32
+	volatile unsigned int *LED_PIO = (unsigned int*)0x40; //make a pointer to access the PIO block
+ 800006c:	00801004 	movi	r2,64
  8000070:	e0bfff15 	stw	r2,-4(fp)
 
 	*LED_PIO = 0; //clear all LEDs
