@@ -2,7 +2,6 @@
 module lab61soc (
 	buttons_external_connection_export,
 	clk_clk,
-	led_wire_export,
 	reset_reset_n,
 	sdram_clk_clk,
 	sdram_wire_addr,
@@ -14,11 +13,16 @@ module lab61soc (
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
 	sdram_wire_we_n,
-	switches_external_connection_export);	
+	keycode_export,
+	usb_irq_export,
+	usb_rst_export,
+	hex_digits_export,
+	leds_export,
+	key_external_connection_export,
+	usb_gpx_export);	
 
 	input	[1:0]	buttons_external_connection_export;
 	input		clk_clk;
-	output	[7:0]	led_wire_export;
 	input		reset_reset_n;
 	output		sdram_clk_clk;
 	output	[12:0]	sdram_wire_addr;
@@ -30,5 +34,11 @@ module lab61soc (
 	output	[1:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
-	input	[7:0]	switches_external_connection_export;
+	output	[7:0]	keycode_export;
+	input		usb_irq_export;
+	input		usb_rst_export;
+	output	[15:0]	hex_digits_export;
+	output	[13:0]	leds_export;
+	input	[1:0]	key_external_connection_export;
+	input		usb_gpx_export;
 endmodule
